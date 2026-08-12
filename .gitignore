@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/__pycache__/
+backend/.venv/
+.venv/
+
+# Build output
+frontend/.next/
+frontend/out/
+dist/
+
+# Environment files
+.env
+.env.local
+.env.production
+frontend/.env.local
+backend/.env
+
+# Large/design files
+*.psd
+*.pptx
+*.ai
+*.sketch
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Docker volumes
+postgres_data/
+uploads/
+
+# Misc
+*.log
+npm-debug.log*

@@ -1,0 +1,167 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "clients": "Clients",
+    "team": "Team",
+    "news": "Blog",
+    "vacancies": "Vacancies",
+    "certificates": "Certificates",
+    "gallery": "Gallery",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "order": "Order Now"
+  },
+  "hero": {
+    "badge": "Professional Printing Solutions",
+    "title": "High-quality",
+    "titleHighlight": "advertising agency",
+    "subtitle": "Business cards, banners, catalogs, packaging and all types of printed products on modern equipment, with quality and speed.",
+    "cta": "Place Order",
+    "ctaSecondary": "View Services"
+  },
+  "stats": {
+    "projects": "Projects",
+    "clients": "Clients",
+    "experience": "Years Experience",
+    "equipment": "Equipment"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "We offer all types of printing services using modern equipment and professional team",
+    "tag": "Services"
+  },
+  "portfolio": {
+    "title": "Our Works",
+    "subtitle": "Best projects completed for our clients",
+    "tag": "Portfolio",
+    "viewAll": "View All",
+    "notFound": "Project not found",
+    "allProjects": "All projects",
+    "client": "Client",
+    "comingSoon": "Projects coming soon"
+  },
+  "about": {
+    "title": "Why Choose Us?",
+    "subtitle": "ImPrinta — a company offering modern printing services",
+    "tag": "About Us",
+    "feature1Title": "Modern Equipment",
+    "feature1Desc": "Working with the latest technologies",
+    "feature2Title": "Fast Delivery",
+    "feature2Desc": "Orders completed in shortest time",
+    "feature3Title": "Affordable Prices",
+    "feature3Desc": "Quality and price balance guaranteed",
+    "feature4Title": "Individual Approach",
+    "feature4Desc": "Personal service for every client",
+    "feature5Title": "Service Across Uzbekistan",
+    "feature5Desc": "Convenient and fast service throughout all regions of Uzbekistan"
+  },
+  "testimonials": {
+    "title": "Client Reviews",
+    "subtitle": "What our clients say about us",
+    "tag": "Testimonials"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to the most common questions",
+    "tag": "FAQ",
+    "q1": "What do I need to place an order?",
+    "a1": "Contact us via phone or website to place an order. If you have a ready design, send the file, otherwise we also provide design services.",
+    "q2": "What is the minimum order quantity?",
+    "a2": "Minimum order quantity varies by service type. Business cards — 100 pcs, banners — 1 pc, packaging — negotiated per batch.",
+    "q3": "How long does an order take?",
+    "a3": "Standard orders are completed in 1-3 business days, complex projects in 5-7 business days. Express service is also available (with additional charge).",
+    "q4": "Do you offer delivery service?",
+    "a4": "Yes, free delivery is available within Tashkent city. We ship to regions via postal service.",
+    "q5": "What payment methods are available?",
+    "a5": "Cash, bank transfer, Payme, Click and Uzum payments are accepted. Invoices are issued for legal entities."
+  },
+  "news": {
+    "title": "Blog",
+    "subtitle": "Latest articles and news",
+    "tag": "Blog",
+    "readMore": "Read More",
+    "notFound": "Article not found",
+    "allArticles": "All articles",
+    "views": "views",
+    "comingSoon": "Articles coming soon"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Have questions? Get a free consultation",
+    "tag": "Contact",
+    "name": "Your Name",
+    "phone": "Phone",
+    "email": "Email",
+    "company": "Company",
+    "service": "Service Type",
+    "message": "Message",
+    "attachment": "Attach File",
+    "submit": "Send",
+    "success": "Your message has been sent successfully!",
+    "successSub": "We will contact you shortly",
+    "selectService": "Select service type",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "addressLabel": "Address",
+    "address": "Tashkent, Uzbekistan",
+    "workingHours": "Working hours: Mon - Sat, 9:00 - 18:00",
+    "serviceWideFormat": "Wide format printing",
+    "servicePolygraphy": "Polygraphy",
+    "servicePackaging": "Packaging",
+    "serviceBranding": "Branding",
+    "service3d": "3D advertising",
+    "serviceInstallation": "Installation service"
+  },
+  "location": {
+    "tag": "Our Location",
+    "title": "Visit Us",
+    "subtitle": "Come to our office to discuss your project",
+    "addressLabel": "Address",
+    "addressLine1": "Tashkent city, Chilanzar district,",
+    "addressLine2": "Bunyodkor street 21",
+    "phoneLabel": "Phone",
+    "workingHoursLabel": "Working Hours",
+    "workingHoursLine1": "Monday - Saturday: 9:00 - 18:00",
+    "workingHoursLine2": "Sunday: Closed",
+    "directions": "Get Directions",
+    "officeLabel": "ImPrinta Office"
+  },
+  "marquee": {
+    "items": "Banner, Business Card, Catalog, Booklet, Packaging, Branding, Flyer, Sticker, Oracal, Poster"
+  },
+  "serviceDetail": {
+    "notFound": "Service not found",
+    "allServices": "All services",
+    "aboutService": "About this service",
+    "orderAcceptance": "Order acceptance",
+    "days": "days",
+    "deliveryTime": "Delivery time",
+    "qualityGuarantee": "Quality guarantee",
+    "orderNow": "Order now"
+  },
+  "map": {
+    "noClients": "No clients in this region"
+  },
+  "cta": {
+    "title": "Let's Discuss Your Project!",
+    "subtitle": "Get a free consultation and find the best solution for your project",
+    "button": "Contact Us"
+  },
+  "footer": {
+    "description": "Professional printing services. High quality, fast service and affordable prices.",
+    "services": "Services",
+    "company": "Company",
+    "contacts": "Contact",
+    "rights": "All rights reserved."
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "back": "Back"
+  }
+}

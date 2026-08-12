@@ -1,0 +1,6 @@
+export { SectionDivider } from './SectionDivider'
+export { HeroDecoration } from './HeroDecoration'
+export { ArchitecturalPattern } from './ArchitecturalPattern'
+export { FooterOrnament } from './FooterOrnament'
+export { PortfolioFrame } from './PortfolioFrame'
+export { MicroOrnament } from './MicroOrnament'

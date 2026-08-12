@@ -1,0 +1,167 @@
+{
+  "nav": {
+    "home": "Bosh sahifa",
+    "about": "Biz haqimizda",
+    "services": "Xizmatlar",
+    "portfolio": "Portfolio",
+    "clients": "Mijozlar",
+    "team": "Jamoa",
+    "news": "Blog",
+    "vacancies": "Vakansiyalar",
+    "certificates": "Sertifikatlar",
+    "gallery": "Galereya",
+    "faq": "FAQ",
+    "contact": "Aloqa",
+    "order": "Buyurtma berish"
+  },
+  "hero": {
+    "badge": "Professional Matbaa Xizmatlari",
+    "title": "Yuqori sifatli",
+    "titleHighlight": "reklama agentligi",
+    "subtitle": "Vizitka, banner, katalog, packaging va boshqa barcha turdagi bosma mahsulotlarni zamonaviy uskunalarda, sifatli va tezkor bajaramiz.",
+    "cta": "Buyurtma berish",
+    "ctaSecondary": "Xizmatlarni ko'rish"
+  },
+  "stats": {
+    "projects": "Loyihalar",
+    "clients": "Mijozlar",
+    "experience": "Yillik tajriba",
+    "equipment": "Uskunalar"
+  },
+  "services": {
+    "title": "Bizning xizmatlar",
+    "subtitle": "Zamonaviy uskunalar va professional jamoa bilan barcha turdagi matbaa xizmatlarini taklif etamiz",
+    "tag": "Xizmatlar"
+  },
+  "portfolio": {
+    "title": "Bizning ishlar",
+    "subtitle": "Mijozlarimiz uchun bajargan eng yaxshi loyihalarimiz",
+    "tag": "Portfolio",
+    "viewAll": "Barchasini ko'rish",
+    "notFound": "Loyiha topilmadi",
+    "allProjects": "Barcha loyihalar",
+    "client": "Mijoz",
+    "comingSoon": "Loyihalar tez orada qo'shiladi"
+  },
+  "about": {
+    "title": "Nima uchun aynan biz?",
+    "subtitle": "ImPrinta — zamonaviy matbaa xizmatlarini taklif etuvchi kompaniya",
+    "tag": "Biz haqimizda",
+    "feature1Title": "Zamonaviy uskunalar",
+    "feature1Desc": "Eng so'nggi texnologiyalar asosida ishlash",
+    "feature2Title": "Tezkor bajarish",
+    "feature2Desc": "Buyurtmalarni qisqa muddatda topshirish",
+    "feature3Title": "Qulay narxlar",
+    "feature3Desc": "Sifat va narx muvozanati kafolati",
+    "feature4Title": "Individual yondashuv",
+    "feature4Desc": "Har bir mijozga shaxsiy xizmat ko'rsatish",
+    "feature5Title": "O'zbekiston bo'ylab xizmat",
+    "feature5Desc": "O'zbekistonning barcha hududlariga qulay va tezkor xizmat ko'rsatamiz"
+  },
+  "testimonials": {
+    "title": "Mijozlar fikri",
+    "subtitle": "Bizning mijozlar nima deydi",
+    "tag": "Fikrlar"
+  },
+  "faq": {
+    "title": "Ko'p so'raladigan savollar",
+    "subtitle": "Eng ko'p beriladigan savollarga javoblar",
+    "tag": "FAQ",
+    "q1": "Buyurtma berish uchun nima kerak?",
+    "a1": "Buyurtma berish uchun telefon yoki saytimiz orqali bog'laning. Dizayn tayyor bo'lsa fayl yuboring, bo'lmasa biz dizayn xizmatini ham ko'rsatamiz.",
+    "q2": "Minimal buyurtma miqdori qancha?",
+    "a2": "Minimal buyurtma miqdori xizmat turiga qarab farqlanadi. Vizitka — 100 dona, banner — 1 dona, packaging — partiya bo'yicha kelishiladi.",
+    "q3": "Buyurtma qancha vaqtda tayyor bo'ladi?",
+    "a3": "Oddiy buyurtmalar 1-3 ish kunida, murakkab loyihalar 5-7 ish kunida tayyor bo'ladi. Tezkor xizmat ham mavjud (qo'shimcha to'lov bilan).",
+    "q4": "Yetkazib berish xizmati bormi?",
+    "a4": "Ha, Toshkent shahrida bepul yetkazib berish mavjud. Viloyatlarga pochta orqali jo'natamiz.",
+    "q5": "To'lov usullari qanday?",
+    "a5": "Naqd pul, bank o'tkazmasi, Payme, Click va Uzum orqali to'lash mumkin. Yuridik shaxslar uchun schyot-faktura rasmiylashtiriladi."
+  },
+  "news": {
+    "title": "Blog",
+    "subtitle": "Eng so'nggi maqolalar va yangiliklar",
+    "tag": "Blog",
+    "readMore": "Batafsil",
+    "notFound": "Maqola topilmadi",
+    "allArticles": "Barcha maqolalar",
+    "views": "ko'rish",
+    "comingSoon": "Maqolalar tez orada qo'shiladi"
+  },
+  "contact": {
+    "title": "Biz bilan bog'laning",
+    "subtitle": "Savollaringiz bormi? Bepul konsultatsiya oling",
+    "tag": "Aloqa",
+    "name": "Ismingiz",
+    "phone": "Telefon",
+    "email": "Email",
+    "company": "Kompaniya",
+    "service": "Xizmat turi",
+    "message": "Xabar",
+    "attachment": "Fayl biriktirish",
+    "submit": "Yuborish",
+    "success": "Xabaringiz muvaffaqiyatli yuborildi!",
+    "successSub": "Tez orada siz bilan bog'lanamiz",
+    "selectService": "Xizmat turini tanlang",
+    "phoneLabel": "Telefon",
+    "emailLabel": "Email",
+    "addressLabel": "Manzil",
+    "address": "Toshkent, O'zbekiston",
+    "workingHours": "Ish vaqti: Dush - Shan, 9:00 - 18:00",
+    "serviceWideFormat": "Keng formatli bosma",
+    "servicePolygraphy": "Poligrafiya",
+    "servicePackaging": "Packaging",
+    "serviceBranding": "Brending",
+    "service3d": "3D reklama",
+    "serviceInstallation": "Montaj xizmati"
+  },
+  "location": {
+    "tag": "Bizning manzil",
+    "title": "Bizga tashrif buyuring",
+    "subtitle": "Ofisimizga kelib, loyihangizni muhokama qilishingiz mumkin",
+    "addressLabel": "Manzil",
+    "addressLine1": "Toshkent shahri, Chilonzor tumani,",
+    "addressLine2": "Bunyodkor ko'chasi 21-uy",
+    "phoneLabel": "Telefon",
+    "workingHoursLabel": "Ish vaqti",
+    "workingHoursLine1": "Dushanba - Shanba: 9:00 - 18:00",
+    "workingHoursLine2": "Yakshanba: Dam olish",
+    "directions": "Yo'nalishni ko'rsatish",
+    "officeLabel": "ImPrinta Office"
+  },
+  "marquee": {
+    "items": "Banner, Vizitka, Katalog, Buklet, Packaging, Brending, Flayer, Stiker, Oracal, Plakat"
+  },
+  "serviceDetail": {
+    "notFound": "Xizmat topilmadi",
+    "allServices": "Barcha xizmatlar",
+    "aboutService": "Xizmat haqida",
+    "orderAcceptance": "Qabul qilish",
+    "days": "kun",
+    "deliveryTime": "Bajarish muddati",
+    "qualityGuarantee": "Sifat kafolati",
+    "orderNow": "Buyurtma berish"
+  },
+  "map": {
+    "noClients": "Bu viloyatda clientlar topilmadi"
+  },
+  "cta": {
+    "title": "Loyihangizni muhokama qilaylik!",
+    "subtitle": "Bepul konsultatsiya oling va loyihangiz uchun eng yaxshi yechimni toping",
+    "button": "Bog'lanish"
+  },
+  "footer": {
+    "description": "Professional matbaa xizmatlari. Yuqori sifat, tezkor xizmat va qulay narxlar.",
+    "services": "Xizmatlar",
+    "company": "Kompaniya",
+    "contacts": "Aloqa",
+    "rights": "Barcha huquqlar himoyalangan."
+  },
+  "common": {
+    "learnMore": "Batafsil",
+    "viewAll": "Barchasini ko'rish",
+    "loading": "Yuklanmoqda...",
+    "error": "Xatolik yuz berdi",
+    "back": "Orqaga"
+  }
+}

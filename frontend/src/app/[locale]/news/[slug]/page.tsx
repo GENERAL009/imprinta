@@ -28,8 +28,7 @@ interface BlogPost {
 function resolveImageUrl(url: string): string {
   if (!url) return ''
   if (url.startsWith('http')) return url
-  const base = process.env.NEXT_PUBLIC_API_URL?.replace('/api/v1', '') || 'http://localhost:8000'
-  return `${base}${url}`
+  return url
 }
 
 export default function BlogDetailPage() {

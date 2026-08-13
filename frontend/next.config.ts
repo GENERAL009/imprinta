@@ -18,11 +18,11 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/uploads/:path*',
-        destination: `${process.env.NEXT_PUBLIC_API_URL?.replace('/api/v1', '') || 'http://localhost:8000'}/uploads/:path*`,
+        destination: 'http://backend:8000/uploads/:path*',
       },
       {
         source: '/gallery/:path*',
-        destination: `${process.env.NEXT_PUBLIC_API_URL?.replace('/api/v1', '') || 'http://localhost:8000'}/gallery/:path*`,
+        destination: 'http://backend:8000/gallery/:path*',
       },
     ]
   },

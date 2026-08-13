@@ -15,21 +15,38 @@ export function Location() {
     api.get('/settings').then(res => {
       const settings = res.data
       if (settings.google_maps) {
-        const url = settings.google_maps
+        const url = settings.google_maps.trim()
+
+        const extractCoords = (u: string): [string, string] | null => {
+          const patterns = [
+            /q=([-\d.]+),([-\d.]+)/,
+            /@([-\d.]+),([-\d.]+)/,
+            /ll=([-\d.]+),([-\d.]+)/,
+            /center=([-\d.]+),([-\d.]+)/,
+          ]
+          for (const p of patterns) {
+            const m = u.match(p)
+            if (m) return [m[1], m[2]]
+          }
+          return null
+        }
+
         if (url.includes('output=embed') || url.includes('/embed')) {
           setMapUrl(url)
-          const coordMatch = url.match(/q=([-\d.]+),([-\d.]+)/)
-          if (coordMatch) {
-            setDirectionsUrl(`https://maps.google.com/?q=${coordMatch[1]},${coordMatch[2]}`)
+          const coords = extractCoords(url)
+          if (coords) {
+            setDirectionsUrl(`https://maps.google.com/?q=${coords[0]},${coords[1]}`)
           }
         } else {
           setDirectionsUrl(url)
-          const coordMatch = url.match(/q=([-\d.]+),([-\d.]+)/)
-          if (coordMatch) {
-            setMapUrl(`https://maps.google.com/maps?q=${coordMatch[1]},${coordMatch[2]}&z=15&output=embed`)
+          const coords = extractCoords(url)
+          if (coords) {
+            setMapUrl(`https://maps.google.com/maps?q=${coords[0]},${coords[1]}&z=15&output=embed`)
+          } else if (url.includes('/place/')) {
+            const placeName = url.match(/\/place\/([^/@]+)/)?.[1] || ''
+            setMapUrl(`https://maps.google.com/maps?q=${decodeURIComponent(placeName)}&z=15&output=embed`)
           } else {
-            const query = url.replace(/https?:\/\/(www\.)?google\.com\/maps.*?\?/, '')
-            setMapUrl(`https://maps.google.com/maps?${query}&output=embed`)
+            setMapUrl(`https://maps.google.com/maps?q=${encodeURIComponent(url)}&z=15&output=embed`)
           }
         }
       }

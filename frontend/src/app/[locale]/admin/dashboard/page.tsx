@@ -943,16 +943,34 @@ function PortfolioPanel() {
 
 function ClientDisplayToggle() {
   const [logosEnabled, setLogosEnabled] = useState(true)
+  const [saving, setSaving] = useState(false)
 
   useEffect(() => {
-    const stored = localStorage.getItem('imprinta-client-logos')
-    if (stored !== null) setLogosEnabled(stored === 'true')
+    loadSetting()
   }, [])
 
-  const toggle = () => {
+  const loadSetting = async () => {
+    try {
+      const res = await api.get('/settings')
+      const data = res.data || {}
+      if (data['client_display_logos'] !== undefined) {
+        setLogosEnabled(data['client_display_logos'] === true || data['client_display_logos'] === 'true')
+      }
+    } catch {}
+  }
+
+  const toggle = async () => {
     const next = !logosEnabled
     setLogosEnabled(next)
-    localStorage.setItem('imprinta-client-logos', String(next))
+    setSaving(true)
+    try {
+      await api.put('/settings', { key: 'client_display_logos', value: next, type: 'boolean', group: 'clients' })
+    } catch (err) {
+      console.error(err)
+      setLogosEnabled(!next)
+    } finally {
+      setSaving(false)
+    }
   }
 
   return (
@@ -968,7 +986,8 @@ function ClientDisplayToggle() {
           <span className={`text-xs font-medium ${!logosEnabled ? 'text-[#00a99e]' : 'text-gray-400'}`}>Text</span>
           <button
             onClick={toggle}
-            className={`relative w-12 h-6 rounded-full transition-colors duration-300 ${logosEnabled ? 'bg-[#00a99e]' : 'bg-gray-300 dark:bg-gray-600'}`}
+            disabled={saving}
+            className={`relative w-12 h-6 rounded-full transition-colors duration-300 ${logosEnabled ? 'bg-[#00a99e]' : 'bg-gray-300 dark:bg-gray-600'} ${saving ? 'opacity-50' : ''}`}
           >
             <div className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-300 ${logosEnabled ? 'translate-x-6' : 'translate-x-0'}`} />
           </button>

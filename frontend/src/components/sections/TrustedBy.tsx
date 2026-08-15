@@ -3,7 +3,6 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { useLocale } from 'next-intl'
 import { api } from '@/lib/api'
-import { useClientLogos } from '@/context/NationalIdentityContext'
 
 interface Client {
   id: string
@@ -25,7 +24,7 @@ export function TrustedBy() {
   const [clients, setClients] = useState<Client[]>([])
   const [title, setTitle] = useState('')
   const [showTitle, setShowTitle] = useState(false)
-  const { showClientLogos } = useClientLogos()
+  const [showClientLogos, setShowClientLogos] = useState(true)
   const locale = useLocale()
 
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -57,6 +56,9 @@ export function TrustedBy() {
       const data = res.data || {}
       const visible = data['partners_title_visible'] !== 'false' && data['partners_title_visible'] !== false
       setShowTitle(visible)
+      if (data['client_display_logos'] !== undefined) {
+        setShowClientLogos(data['client_display_logos'] === true || data['client_display_logos'] === 'true')
+      }
       if (locale === 'ru') setTitle(data['partners_title_ru'] || 'Наши Партнёры')
       else if (locale === 'en') setTitle(data['partners_title_en'] || 'Our Partners')
       else setTitle(data['partners_title_uz'] || 'Bizning Hamkorlar')

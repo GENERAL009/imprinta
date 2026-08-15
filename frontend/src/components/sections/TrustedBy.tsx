@@ -89,11 +89,11 @@ export function TrustedBy() {
           return (
             <span key={`${client.id}-${i}`} className="flex items-center gap-8">
               {shouldShowLogo ? (
-                <span className="inline-flex items-center justify-center min-w-[200px] h-[80px]">
+                <span className="inline-flex items-center justify-center min-w-[280px] h-[120px] md:min-w-[320px] md:h-[140px]">
                   <img
                     src={resolveImageUrl(client.logo!)}
                     alt={client.name}
-                    className="max-w-[180px] max-h-[70px] object-contain opacity-50 grayscale hover:opacity-80 hover:grayscale-0 transition-all duration-300"
+                    className="max-w-[260px] max-h-[110px] md:max-w-[300px] md:max-h-[130px] object-contain opacity-50 grayscale hover:opacity-80 hover:grayscale-0 transition-all duration-300"
                   />
                 </span>
               ) : shouldShowText ? (

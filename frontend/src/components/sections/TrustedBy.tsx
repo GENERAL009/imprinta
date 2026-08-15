@@ -12,6 +12,8 @@ interface Client {
   logo: string | null
   website: string | null
   is_partner: boolean
+  show_text: boolean
+  show_logo: boolean
 }
 
 function resolveImageUrl(url: string): string {
@@ -80,24 +82,29 @@ export function TrustedBy() {
         transition={{ duration: clients.length * 4, repeat: Infinity, ease: 'linear' }}
         className="whitespace-nowrap flex items-center gap-8"
       >
-        {doubled.map((client, i) => (
-          <span key={`${client.id}-${i}`} className="flex items-center gap-8">
-            {showClientLogos && client.logo ? (
-              <span className="inline-flex items-center justify-center min-w-[140px] h-[50px]">
-                <img
-                  src={resolveImageUrl(client.logo)}
-                  alt={client.name}
-                  className="max-w-[120px] max-h-[40px] object-contain opacity-40 grayscale hover:opacity-70 hover:grayscale-0 transition-all duration-300"
-                />
-              </span>
-            ) : (
-              <span className="text-[2.5rem] md:text-[3.5rem] font-extrabold text-brand-navy/[0.07] dark:text-white/[0.05] uppercase tracking-wider select-none">
-                {client.name}
-              </span>
-            )}
-            <span className="w-2 h-2 rounded-full bg-brand-teal/20 shrink-0" />
-          </span>
-        ))}
+        {doubled.map((client, i) => {
+          const shouldShowLogo = client.show_logo !== false && client.logo && showClientLogos
+          const shouldShowText = client.show_text !== false
+
+          return (
+            <span key={`${client.id}-${i}`} className="flex items-center gap-8">
+              {shouldShowLogo ? (
+                <span className="inline-flex items-center justify-center min-w-[200px] h-[80px]">
+                  <img
+                    src={resolveImageUrl(client.logo!)}
+                    alt={client.name}
+                    className="max-w-[180px] max-h-[70px] object-contain opacity-50 grayscale hover:opacity-80 hover:grayscale-0 transition-all duration-300"
+                  />
+                </span>
+              ) : shouldShowText ? (
+                <span className="text-[2.5rem] md:text-[3.5rem] font-extrabold text-brand-navy/[0.07] dark:text-white/[0.05] uppercase tracking-wider select-none">
+                  {client.name}
+                </span>
+              ) : null}
+              <span className="w-2 h-2 rounded-full bg-brand-teal/20 shrink-0" />
+            </span>
+          )
+        })}
       </motion.div>
     </section>
   )

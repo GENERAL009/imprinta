@@ -55,6 +55,8 @@ class Client(BaseModel):
     logo = Column(String(500), nullable=True)
     website = Column(String(500), nullable=True)
     is_partner = Column(Boolean, default=False)
+    show_text = Column(Boolean, default=True)
+    show_logo = Column(Boolean, default=True)
 
 
 class Testimonial(BaseModel):

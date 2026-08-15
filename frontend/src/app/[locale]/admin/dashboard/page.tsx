@@ -1005,7 +1005,7 @@ function ClientsPanel() {
 
   const openCreate = () => {
     setEditItem(null)
-    setForm({ name: '', logo: '', website: '', is_partner: false, is_visible: true, sort_order: 0 })
+    setForm({ name: '', logo: '', website: '', is_partner: false, is_visible: true, sort_order: 0, show_text: true, show_logo: true })
     setModalOpen(true)
   }
 
@@ -1064,6 +1064,13 @@ function ClientsPanel() {
           <div className="flex flex-col gap-3">
             <Toggle value={form.is_partner || false} onChange={(v) => setForm({ ...form, is_partner: v })} label="Trusted Partner (logo on main page)" />
             <Toggle value={form.is_visible !== false} onChange={(v) => setForm({ ...form, is_visible: v })} label="Visible on website" />
+          </div>
+          <div className="p-4 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10">
+            <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Display on Site</p>
+            <div className="flex flex-col gap-3">
+              <Toggle value={form.show_text !== false} onChange={(v) => setForm({ ...form, show_text: v })} label="Show company name (text)" />
+              <Toggle value={form.show_logo !== false} onChange={(v) => setForm({ ...form, show_logo: v })} label="Show company logo (image)" />
+            </div>
           </div>
         </div>
         <div className="flex justify-end gap-3 mt-6 pt-4 border-t border-gray-200 dark:border-white/[0.08]">

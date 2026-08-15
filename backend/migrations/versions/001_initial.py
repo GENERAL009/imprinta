@@ -93,6 +93,8 @@ def upgrade() -> None:
         sa.Column('logo', sa.String(500), nullable=True),
         sa.Column('website', sa.String(500), nullable=True),
         sa.Column('is_partner', sa.Boolean(), default=False),
+        sa.Column('show_text', sa.Boolean(), default=True),
+        sa.Column('show_logo', sa.Boolean(), default=True),
         sa.Column('created_at', sa.DateTime(timezone=True)),
         sa.Column('updated_at', sa.DateTime(timezone=True)),
         sa.Column('is_deleted', sa.Boolean(), default=False),

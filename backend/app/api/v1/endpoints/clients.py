@@ -18,6 +18,8 @@ class ClientCreate(BaseModel):
     logo: Optional[str] = None
     website: Optional[str] = None
     is_partner: bool = False
+    show_text: bool = True
+    show_logo: bool = True
     sort_order: int = 0
     is_visible: bool = True
 

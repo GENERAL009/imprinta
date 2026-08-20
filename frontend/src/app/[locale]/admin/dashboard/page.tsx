@@ -2311,6 +2311,120 @@ function SocialLinksPanel() {
   )
 }
 
+function ContactInfoSettings() {
+  const [phone, setPhone] = useState('')
+  const [phone2, setPhone2] = useState('')
+  const [email, setEmail] = useState('')
+  const [address, setAddress] = useState('')
+  const [googleMaps, setGoogleMaps] = useState('')
+  const [statsProjects, setStatsProjects] = useState('')
+  const [statsClients, setStatsClients] = useState('')
+  const [statsExperience, setStatsExperience] = useState('')
+  const [statsEquipment, setStatsEquipment] = useState('')
+  const [saving, setSaving] = useState(false)
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    api.get('/settings').then(res => {
+      const data = res.data || {}
+      setPhone(data['contact_phone'] || data['phone'] || '')
+      setPhone2(data['contact_phone2'] || data['phone2'] || '')
+      setEmail(data['contact_email'] || data['email'] || '')
+      setAddress(data['contact_address'] || data['address'] || '')
+      setGoogleMaps(data['google_maps'] || '')
+      setStatsProjects(data['stats_projects'] || '')
+      setStatsClients(data['stats_clients'] || '')
+      setStatsExperience(data['stats_experience'] || '')
+      setStatsEquipment(data['stats_equipment'] || '')
+      setLoaded(true)
+    }).catch(() => setLoaded(true))
+  }, [])
+
+  const handleSave = async () => {
+    setSaving(true)
+    try {
+      await api.put('/settings/bulk', [
+        { key: 'contact_phone', value: phone, type: 'text', group: 'contact' },
+        { key: 'contact_phone2', value: phone2, type: 'text', group: 'contact' },
+        { key: 'contact_email', value: email, type: 'text', group: 'contact' },
+        { key: 'contact_address', value: address, type: 'text', group: 'contact' },
+        { key: 'google_maps', value: googleMaps, type: 'text', group: 'contact' },
+        { key: 'stats_projects', value: statsProjects, type: 'text', group: 'stats' },
+        { key: 'stats_clients', value: statsClients, type: 'text', group: 'stats' },
+        { key: 'stats_experience', value: statsExperience, type: 'text', group: 'stats' },
+        { key: 'stats_equipment', value: statsEquipment, type: 'text', group: 'stats' },
+      ])
+    } catch (err) { console.error(err) }
+    finally { setSaving(false) }
+  }
+
+  if (!loaded) return null
+
+  return (
+    <div className="mb-6 space-y-6">
+      <div>
+        <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-3 px-1">Kontakt Ma&apos;lumotlari</h3>
+        <div className="rounded-xl bg-white dark:bg-[#1a1750] border border-gray-100 dark:border-white/[0.08] p-4 space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div>
+              <label className="text-xs text-gray-500 mb-1 block">Telefon (asosiy)</label>
+              <input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+998 90 123 45 67" className="w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-[#00a99e]/50 focus:border-[#00a99e] outline-none" />
+            </div>
+            <div>
+              <label className="text-xs text-gray-500 mb-1 block">Telefon (qo&apos;shimcha)</label>
+              <input value={phone2} onChange={(e) => setPhone2(e.target.value)} placeholder="+998 71 200 00 00" className="w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-[#00a99e]/50 focus:border-[#00a99e] outline-none" />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div>
+              <label className="text-xs text-gray-500 mb-1 block">Email</label>
+              <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="info@imprinta.uz" className="w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-[#00a99e]/50 focus:border-[#00a99e] outline-none" />
+            </div>
+            <div>
+              <label className="text-xs text-gray-500 mb-1 block">Manzil</label>
+              <input value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Toshkent, O'zbekiston" className="w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-[#00a99e]/50 focus:border-[#00a99e] outline-none" />
+            </div>
+          </div>
+          <div>
+            <label className="text-xs text-gray-500 mb-1 block">Google Maps URL</label>
+            <input value={googleMaps} onChange={(e) => setGoogleMaps(e.target.value)} placeholder="https://maps.google.com/..." className="w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-[#00a99e]/50 focus:border-[#00a99e] outline-none" />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-3 px-1">Statistika (Hero Section)</h3>
+        <div className="rounded-xl bg-white dark:bg-[#1a1750] border border-gray-100 dark:border-white/[0.08] p-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div>
+              <label className="text-xs text-gray-500 mb-1 block">Loyihalar</label>
+              <input value={statsProjects} onChange={(e) => setStatsProjects(e.target.value)} placeholder="500+" className="w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-[#00a99e]/50 focus:border-[#00a99e] outline-none" />
+            </div>
+            <div>
+              <label className="text-xs text-gray-500 mb-1 block">Mijozlar</label>
+              <input value={statsClients} onChange={(e) => setStatsClients(e.target.value)} placeholder="50+" className="w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-[#00a99e]/50 focus:border-[#00a99e] outline-none" />
+            </div>
+            <div>
+              <label className="text-xs text-gray-500 mb-1 block">Tajriba (yil)</label>
+              <input value={statsExperience} onChange={(e) => setStatsExperience(e.target.value)} placeholder="5+" className="w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-[#00a99e]/50 focus:border-[#00a99e] outline-none" />
+            </div>
+            <div>
+              <label className="text-xs text-gray-500 mb-1 block">Jihozlar</label>
+              <input value={statsEquipment} onChange={(e) => setStatsEquipment(e.target.value)} placeholder="20+" className="w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-[#00a99e]/50 focus:border-[#00a99e] outline-none" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex justify-end">
+        <button onClick={handleSave} disabled={saving} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#00a99e] text-white hover:bg-[#008f86] transition-colors font-medium text-sm disabled:opacity-50">
+          <Save className="w-4 h-4" />{saving ? 'Saqlanmoqda...' : 'Saqlash'}
+        </button>
+      </div>
+    </div>
+  )
+}
+
 function SettingsPanel() {
   const [settings, setSettings] = useState<any>({})
   const [loading, setLoading] = useState(true)
@@ -2324,17 +2438,22 @@ function SettingsPanel() {
     try {
       const res = await api.get('/settings/grouped')
       setSettings(res.data)
-      // Flatten settings into key-value pairs for editing
       const flat: Record<string, string> = {}
       if (typeof res.data === 'object') {
         Object.entries(res.data).forEach(([group, items]: [string, any]) => {
           if (Array.isArray(items)) {
             items.forEach((item: any) => {
-              flat[item.key || item.id] = item.value || ''
+              if (typeof item.value === 'string' || typeof item.value === 'number') {
+                flat[item.key || item.id] = String(item.value ?? '')
+              }
             })
           } else if (typeof items === 'object') {
             Object.entries(items).forEach(([key, val]: [string, any]) => {
-              flat[`${group}.${key}`] = typeof val === 'object' ? (val.value || '') : String(val || '')
+              if (typeof val !== 'object' || val === null) {
+                flat[`${group}.${key}`] = String(val ?? '')
+              } else if (typeof val === 'object' && val.value !== undefined && typeof val.value !== 'object') {
+                flat[`${group}.${key}`] = String(val.value ?? '')
+              }
             })
           }
         })
@@ -2364,12 +2483,13 @@ function SettingsPanel() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <p className="text-sm text-gray-500 dark:text-gray-400">Manage site settings</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400">Sayt sozlamalari</p>
         <button onClick={handleSave} disabled={saving} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#00a99e] text-white hover:bg-[#008f86] transition-colors font-medium text-sm disabled:opacity-50">
-          <Save className="w-4 h-4" />{saving ? 'Saving...' : 'Save All'}
+          <Save className="w-4 h-4" />{saving ? 'Saqlanmoqda...' : 'Hammasini saqlash'}
         </button>
       </div>
 
+      <ContactInfoSettings />
       <SiteDisplayToggles />
       <PartnersTitleSettings />
 

@@ -5,10 +5,21 @@ import { Link } from '@/i18n/routing'
 import { Send, Instagram, Facebook, Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import { FooterOrnament } from '@/components/ui/uzbek'
+import { useSettings } from '@/context/SettingsContext'
 
 export function Footer() {
   const t = useTranslations('footer')
   const nav = useTranslations('nav')
+  const { settings } = useSettings()
+
+  const phone1 = settings['contact_phone'] || settings['phone'] || '+998 90 123 45 67'
+  const email = settings['contact_email'] || settings['email'] || 'info@imprinta.uz'
+  const address = settings['contact_address'] || settings['address'] || 'Toshkent, O\'zbekiston'
+  const telegram = settings['social_telegram'] || settings['telegram'] || 'https://t.me/imprinta'
+  const instagram = settings['social_instagram'] || settings['instagram'] || 'https://instagram.com/imprinta.uz'
+  const facebook = settings['social_facebook'] || settings['facebook'] || '#'
+
+  const socialLinks: Array<{ id: string; url: string; label: string; icon?: string }> = settings['social.links'] || []
 
   const services = [
     { name: 'Keng formatli bosma', href: '/services' },
@@ -46,15 +57,29 @@ export function Footer() {
               {t('description')}
             </p>
             <div className="flex items-center gap-2.5">
-              <a href="https://t.me/imprinta" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/[0.04] hover:bg-brand-teal/20 border border-white/[0.06] hover:border-brand-teal/30 flex items-center justify-center text-white/40 hover:text-brand-teal transition-all duration-300" aria-label="Telegram">
-                <Send className="w-4 h-4" />
-              </a>
-              <a href="https://instagram.com/imprinta.uz" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/[0.04] hover:bg-brand-teal/20 border border-white/[0.06] hover:border-brand-teal/30 flex items-center justify-center text-white/40 hover:text-brand-teal transition-all duration-300" aria-label="Instagram">
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-xl bg-white/[0.04] hover:bg-brand-teal/20 border border-white/[0.06] hover:border-brand-teal/30 flex items-center justify-center text-white/40 hover:text-brand-teal transition-all duration-300" aria-label="Facebook">
-                <Facebook className="w-4 h-4" />
-              </a>
+              {socialLinks.length > 0 ? (
+                socialLinks.filter(l => l.url && l.url.trim()).map((link) => (
+                  <a key={link.id} href={link.url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/[0.04] hover:bg-brand-teal/20 border border-white/[0.06] hover:border-brand-teal/30 flex items-center justify-center text-white/40 hover:text-brand-teal transition-all duration-300" aria-label={link.label}>
+                    {link.icon ? (
+                      <img src={link.icon} alt="" className="w-5 h-5 object-contain" />
+                    ) : (
+                      <Send className="w-4 h-4" />
+                    )}
+                  </a>
+                ))
+              ) : (
+                <>
+                  <a href={telegram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/[0.04] hover:bg-brand-teal/20 border border-white/[0.06] hover:border-brand-teal/30 flex items-center justify-center text-white/40 hover:text-brand-teal transition-all duration-300" aria-label="Telegram">
+                    <Send className="w-4 h-4" />
+                  </a>
+                  <a href={instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/[0.04] hover:bg-brand-teal/20 border border-white/[0.06] hover:border-brand-teal/30 flex items-center justify-center text-white/40 hover:text-brand-teal transition-all duration-300" aria-label="Instagram">
+                    <Instagram className="w-4 h-4" />
+                  </a>
+                  <a href={facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/[0.04] hover:bg-brand-teal/20 border border-white/[0.06] hover:border-brand-teal/30 flex items-center justify-center text-white/40 hover:text-brand-teal transition-all duration-300" aria-label="Facebook">
+                    <Facebook className="w-4 h-4" />
+                  </a>
+                </>
+              )}
             </div>
           </div>
 
@@ -96,19 +121,19 @@ export function Footer() {
                 <div className="w-9 h-9 rounded-lg bg-brand-teal/[0.08] flex items-center justify-center">
                   <Phone className="w-4 h-4 text-brand-teal" />
                 </div>
-                <span className="text-white/50 text-[13px]">+998 90 123 45 67</span>
+                <span className="text-white/50 text-[13px]">{phone1}</span>
               </li>
               <li className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-lg bg-brand-teal/[0.08] flex items-center justify-center">
                   <Mail className="w-4 h-4 text-brand-teal" />
                 </div>
-                <span className="text-white/50 text-[13px]">info@imprinta.uz</span>
+                <span className="text-white/50 text-[13px]">{email}</span>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-9 h-9 rounded-lg bg-brand-teal/[0.08] flex items-center justify-center shrink-0">
                   <MapPin className="w-4 h-4 text-brand-teal" />
                 </div>
-                <span className="text-white/50 text-[13px] pt-2">Toshkent, O'zbekiston</span>
+                <span className="text-white/50 text-[13px] pt-2">{address}</span>
               </li>
             </ul>
           </div>

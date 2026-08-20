@@ -6,41 +6,29 @@ import { ArrowRight } from 'lucide-react'
 import { Link } from '@/i18n/routing'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
-import { api } from '@/lib/api'
+import { useSettings } from '@/context/SettingsContext'
 
 export function Hero() {
   const t = useTranslations('hero')
   const stats = useTranslations('stats')
   const { resolvedTheme } = useTheme()
+  const { settings } = useSettings()
   const [mounted, setMounted] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [statsValues, setStatsValues] = useState({
-    projects: '500+',
-    clients: '50+',
-    experience: '5+',
-    equipment: '20+',
-  })
 
   useEffect(() => {
     setMounted(true)
     const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-
-
   }, [])
 
-  useEffect(() => {
-    api.get('/settings').then(res => {
-      const data = res.data || {}
-      setStatsValues(prev => ({
-        projects: data['stats_projects'] || prev.projects,
-        clients: data['stats_clients'] || prev.clients,
-        experience: data['stats_experience'] || prev.experience,
-        equipment: data['stats_equipment'] || prev.equipment,
-      }))
-    }).catch(() => {})
-  }, [])
+  const statsValues = {
+    projects: settings['stats_projects'] || '500+',
+    clients: settings['stats_clients'] || '50+',
+    experience: settings['stats_experience'] || '5+',
+    equipment: settings['stats_equipment'] || '20+',
+  }
 
   const isDark = resolvedTheme === 'dark'
 

@@ -7,6 +7,7 @@ import { routing } from '@/i18n/routing'
 import { ThemeProvider } from '@/components/layout/ThemeProvider'
 import { LayoutWrapper } from '@/components/layout/LayoutWrapper'
 import { NationalIdentityProvider } from '@/context/NationalIdentityContext'
+import { SettingsProvider } from '@/context/SettingsContext'
 import '@/styles/globals.css'
 
 const inter = Inter({
@@ -38,9 +39,11 @@ export default async function LocaleLayout({
       <body className={`${inter.variable} font-sans antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
-            <NationalIdentityProvider>
-              <LayoutWrapper>{children}</LayoutWrapper>
-            </NationalIdentityProvider>
+            <SettingsProvider>
+              <NationalIdentityProvider>
+                <LayoutWrapper>{children}</LayoutWrapper>
+              </NationalIdentityProvider>
+            </SettingsProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

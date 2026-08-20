@@ -6,9 +6,11 @@ import { motion } from 'framer-motion'
 import { Send, CheckCircle, Phone, Mail, MapPin } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { api } from '@/lib/api'
+import { useSettings } from '@/context/SettingsContext'
 
 export function ContactForm() {
   const t = useTranslations('contact')
+  const { settings } = useSettings()
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [form, setForm] = useState({
@@ -65,7 +67,7 @@ export function ContactForm() {
                 </div>
                 <div>
                   <p className="text-[13px] text-light-text-secondary dark:text-dark-text-secondary mb-1">{t('phoneLabel')}</p>
-                  <p className="text-[15px] font-semibold text-light-text dark:text-dark-text">+998 90 123 45 67</p>
+                  <p className="text-[15px] font-semibold text-light-text dark:text-dark-text">{settings['contact_phone'] || settings['phone'] || '+998 90 123 45 67'}</p>
                 </div>
               </div>
             </div>
@@ -77,7 +79,7 @@ export function ContactForm() {
                 </div>
                 <div>
                   <p className="text-[13px] text-light-text-secondary dark:text-dark-text-secondary mb-1">{t('emailLabel')}</p>
-                  <p className="text-[15px] font-semibold text-light-text dark:text-dark-text">info@imprinta.uz</p>
+                  <p className="text-[15px] font-semibold text-light-text dark:text-dark-text">{settings['contact_email'] || settings['email'] || 'info@imprinta.uz'}</p>
                 </div>
               </div>
             </div>
@@ -89,7 +91,7 @@ export function ContactForm() {
                 </div>
                 <div>
                   <p className="text-[13px] text-light-text-secondary dark:text-dark-text-secondary mb-1">{t('addressLabel')}</p>
-                  <p className="text-[15px] font-semibold text-light-text dark:text-dark-text">{t('address')}</p>
+                  <p className="text-[15px] font-semibold text-light-text dark:text-dark-text">{settings['contact_address'] || settings['address'] || t('address')}</p>
                 </div>
               </div>
             </div>

@@ -4,18 +4,19 @@ import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import { MapPin, Phone, Clock, Navigation } from 'lucide-react'
-import { api } from '@/lib/api'
+import { useSettings } from '@/context/SettingsContext'
 
 export function Location() {
   const t = useTranslations('location')
+  const { settings } = useSettings()
   const [mapUrl, setMapUrl] = useState('')
   const [directionsUrl, setDirectionsUrl] = useState('https://maps.google.com')
 
   useEffect(() => {
-    api.get('/settings').then(res => {
-      const settings = res.data
+    if (!settings.google_maps) return
+    const processMap = () => {
       if (settings.google_maps) {
-        const url = settings.google_maps.trim()
+        const url = (settings.google_maps as string).trim()
 
         const extractCoords = (u: string): [string, string] | null => {
           const patterns = [
@@ -50,8 +51,9 @@ export function Location() {
           }
         }
       }
-    }).catch(() => {})
-  }, [])
+    }
+    processMap()
+  }, [settings])
 
   return (
     <section className="section-spacing relative overflow-hidden bg-light-bg-alt dark:bg-dark-bg-alt" id="location">
@@ -122,8 +124,13 @@ export function Location() {
                 <div>
                   <p className="text-[14px] font-bold mb-1 text-light-text dark:text-dark-text">{t('phoneLabel')}</p>
                   <p className="text-[13px] text-light-text-secondary dark:text-dark-text-secondary">
-                    +998 90 123 45 67<br />
-                    +998 71 200 00 00
+                    {settings['contact_phone'] || settings['phone'] || '+998 90 123 45 67'}
+                    {(settings['contact_phone2'] || settings['phone2']) && (
+                      <><br />{settings['contact_phone2'] || settings['phone2']}</>
+                    )}
+                    {!settings['contact_phone2'] && !settings['phone2'] && !settings['contact_phone'] && !settings['phone'] && (
+                      <><br />+998 71 200 00 00</>
+                    )}
                   </p>
                 </div>
               </div>
@@ -206,9 +213,6 @@ export function Location() {
                 </motion.div>
               </div>
 
-              <div className="absolute top-4 left-4 px-4 py-2 rounded-xl glass-light dark:glass-dark">
-                <p className="text-[11px] font-bold text-brand-navy dark:text-white">📍 {t('officeLabel')}</p>
-              </div>
 
               <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-light-bg-alt dark:from-dark-bg-alt to-transparent" />
             </div>

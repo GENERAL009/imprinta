@@ -8,7 +8,7 @@ import { Menu, X, Sun, Moon, ChevronDown, Send } from 'lucide-react'
 import { Link, usePathname, useRouter } from '@/i18n/routing'
 import { useLocale } from 'next-intl'
 import Image from 'next/image'
-import { api } from '@/lib/api'
+import { useSettings } from '@/context/SettingsContext'
 
 const navItems = [
   { key: 'home', href: '/' },
@@ -35,26 +35,21 @@ interface SocialLink {
 export function Header() {
   const t = useTranslations('nav')
   const { setTheme, resolvedTheme } = useTheme()
+  const { settings } = useSettings()
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
   const [socialOpen, setSocialOpen] = useState(false)
-  const [socialLinks, setSocialLinks] = useState<SocialLink[]>([])
   const [mounted, setMounted] = useState(false)
   const locale = useLocale()
   const pathname = usePathname()
   const router = useRouter()
 
-  useEffect(() => { setMounted(true) }, [])
+  const socialLinks: SocialLink[] = (settings['social.links'] && Array.isArray(settings['social.links']))
+    ? settings['social.links'].filter((l: any) => l.url && l.url.trim())
+    : []
 
-  useEffect(() => {
-    api.get('/settings').then(res => {
-      const data = res.data || {}
-      if (data['social.links'] && Array.isArray(data['social.links'])) {
-        setSocialLinks(data['social.links'].filter((l: any) => l.url && l.url.trim()))
-      }
-    }).catch(() => {})
-  }, [])
+  useEffect(() => { setMounted(true) }, [])
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30)

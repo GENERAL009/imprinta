@@ -37,7 +37,9 @@
       "Bash(dir *)",
       "Bash(grep -v \"^$\")",
       "Bash(docker exec *)",
-      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'Total: {d[\\\\\"total\\\\\"]}'\\); [print\\(f' - {i[\\\\\"slug\\\\\"]}: {i[\\\\\"title_uz\\\\\"]}'\\) for i in d['items'][:3]]\")"
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'Total: {d[\\\\\"total\\\\\"]}'\\); [print\\(f' - {i[\\\\\"slug\\\\\"]}: {i[\\\\\"title_uz\\\\\"]}'\\) for i in d['items'][:3]]\")",
+      "Bash(where npx *)",
+      "Bash(cmd //c \"where node\" 2>&1)"
     ]
   }
 }

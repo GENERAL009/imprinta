@@ -13,6 +13,7 @@ export function Footer() {
   const { settings } = useSettings()
 
   const phone1 = settings['contact_phone'] || settings['company_phone'] || settings['phone'] || '+998 90 123 45 67'
+  const phone2 = settings['contact_phone2'] || settings['phone2'] || ''
   const email = settings['contact_email'] || settings['company_email'] || settings['email'] || 'info@imprinta.uz'
   const address = settings['contact_address'] || settings['company_address_uz'] || settings['address'] || 'Toshkent, O\'zbekiston'
   const telegram = settings['social_telegram'] || settings['telegram'] || 'https://t.me/imprinta'
@@ -121,7 +122,10 @@ export function Footer() {
                 <div className="w-9 h-9 rounded-lg bg-brand-teal/[0.08] flex items-center justify-center">
                   <Phone className="w-4 h-4 text-brand-teal" />
                 </div>
-                <span className="text-white/50 text-[13px]">{phone1}</span>
+                <div className="text-white/50 text-[13px]">
+                  <span>{phone1}</span>
+                  {phone2 && <><br /><span>{phone2}</span></>}
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-lg bg-brand-teal/[0.08] flex items-center justify-center">

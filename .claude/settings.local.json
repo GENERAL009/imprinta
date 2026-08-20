@@ -39,7 +39,18 @@
       "Bash(docker exec *)",
       "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'Total: {d[\\\\\"total\\\\\"]}'\\); [print\\(f' - {i[\\\\\"slug\\\\\"]}: {i[\\\\\"title_uz\\\\\"]}'\\) for i in d['items'][:3]]\")",
       "Bash(where npx *)",
-      "Bash(cmd //c \"where node\" 2>&1)"
+      "Bash(cmd //c \"where node\" 2>&1)",
+      "Bash(copy *)",
+      "Bash(cmd.exe *)",
+      "Bash(powershell.exe *)",
+      "Bash(/mnt/c/Windows/System32/cmd.exe *)",
+      "Bash(C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe *)",
+      "Bash(C:\\\\WINDOWS\\\\system32\\\\xcopy.exe *)",
+      "Bash(C:\\\\WINDOWS\\\\system32\\\\cmd.exe *)",
+      "Bash(C:\\\\nvm4w\\\\nodejs\\\\node.exe *)",
+      "Bash(C:/Program Files/nodejs/node.exe *)",
+      "Bash(\"C:/Program Files/nodejs/npx.cmd\" tsc --noEmit --project \"C:/Users/abdul/OneDrive/Desktop/ClaudeBedrock/Projects/ImPrinta/frontend/tsconfig.json\")",
+      "Bash(\"C:/Program Files/nodejs/npx.cmd\" --package typescript tsc --noEmit)"
     ]
   }
 }

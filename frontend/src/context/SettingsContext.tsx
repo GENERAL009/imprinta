@@ -20,9 +20,13 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     api.get('/settings')
       .then(res => {
-        setSettings(res.data || {})
+        const data = res.data || {}
+        console.log('[SettingsContext] Loaded settings:', data)
+        setSettings(data)
       })
-      .catch(() => {})
+      .catch((err) => {
+        console.error('[SettingsContext] Failed to load settings:', err)
+      })
       .finally(() => setLoading(false))
   }, [])
 

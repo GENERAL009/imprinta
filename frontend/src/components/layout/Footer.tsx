@@ -12,9 +12,9 @@ export function Footer() {
   const nav = useTranslations('nav')
   const { settings } = useSettings()
 
-  const phone1 = settings['contact_phone'] || settings['phone'] || '+998 90 123 45 67'
-  const email = settings['contact_email'] || settings['email'] || 'info@imprinta.uz'
-  const address = settings['contact_address'] || settings['address'] || 'Toshkent, O\'zbekiston'
+  const phone1 = settings['contact_phone'] || settings['company_phone'] || settings['phone'] || '+998 90 123 45 67'
+  const email = settings['contact_email'] || settings['company_email'] || settings['email'] || 'info@imprinta.uz'
+  const address = settings['contact_address'] || settings['company_address_uz'] || settings['address'] || 'Toshkent, O\'zbekiston'
   const telegram = settings['social_telegram'] || settings['telegram'] || 'https://t.me/imprinta'
   const instagram = settings['social_instagram'] || settings['instagram'] || 'https://instagram.com/imprinta.uz'
   const facebook = settings['social_facebook'] || settings['facebook'] || '#'

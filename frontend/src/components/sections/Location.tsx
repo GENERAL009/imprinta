@@ -124,7 +124,7 @@ export function Location() {
                 <div>
                   <p className="text-[14px] font-bold mb-1 text-light-text dark:text-dark-text">{t('phoneLabel')}</p>
                   <p className="text-[13px] text-light-text-secondary dark:text-dark-text-secondary">
-                    {settings['contact_phone'] || settings['phone'] || '+998 90 123 45 67'}
+                    {settings['contact_phone'] || settings['company_phone'] || settings['phone'] || '+998 90 123 45 67'}
                     {(settings['contact_phone2'] || settings['phone2']) && (
                       <><br />{settings['contact_phone2'] || settings['phone2']}</>
                     )}

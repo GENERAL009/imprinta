@@ -2327,10 +2327,10 @@ function ContactInfoSettings() {
   useEffect(() => {
     api.get('/settings').then(res => {
       const data = res.data || {}
-      setPhone(data['contact_phone'] || data['phone'] || '')
+      setPhone(data['contact_phone'] || data['company_phone'] || data['phone'] || '')
       setPhone2(data['contact_phone2'] || data['phone2'] || '')
-      setEmail(data['contact_email'] || data['email'] || '')
-      setAddress(data['contact_address'] || data['address'] || '')
+      setEmail(data['contact_email'] || data['company_email'] || data['email'] || '')
+      setAddress(data['contact_address'] || data['company_address_uz'] || data['address'] || '')
       setGoogleMaps(data['google_maps'] || '')
       setStatsProjects(data['stats_projects'] || '')
       setStatsClients(data['stats_clients'] || '')
@@ -2344,9 +2344,12 @@ function ContactInfoSettings() {
     setSaving(true)
     try {
       await api.put('/settings/bulk', [
+        { key: 'company_phone', value: phone, type: 'text', group: 'contact' },
         { key: 'contact_phone', value: phone, type: 'text', group: 'contact' },
         { key: 'contact_phone2', value: phone2, type: 'text', group: 'contact' },
+        { key: 'company_email', value: email, type: 'text', group: 'contact' },
         { key: 'contact_email', value: email, type: 'text', group: 'contact' },
+        { key: 'company_address_uz', value: address, type: 'text', group: 'contact' },
         { key: 'contact_address', value: address, type: 'text', group: 'contact' },
         { key: 'google_maps', value: googleMaps, type: 'text', group: 'contact' },
         { key: 'stats_projects', value: statsProjects, type: 'text', group: 'stats' },
